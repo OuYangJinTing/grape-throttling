@@ -1,0 +1,4 @@
+source 'https://rubygems.org'
+
+gemspec path: '..'
+gem 'grape', '~> 1.0.0'

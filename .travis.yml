@@ -1,0 +1,15 @@
+---
+services:
+  - redis
+language: ruby
+rvm:
+  - 2.5.8
+  - 2.6.6
+  - 2.7.2
+before_install: gem install bundler
+after_success: bundle install
+gemfile:
+  - gemfiles/grape-0-16
+  - gemfiles/grape-1-0
+  - gemfiles/grape-1-5
+script: bundle exec rake test && bundle exec rubocop
