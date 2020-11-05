@@ -5,6 +5,8 @@
 
 If your api through [`grape`](https://github.com/ruby-grape/grape) build, you can use `grape-throttling` limit api rate.
 
+**Import:** `Grape::Throttling` depend on [`redis`](https://github.com/redis/redis), you must install [`redis`](https://github.com/redis/redis) first
+
 - **Simple**. The you only need to call `use_throttle` in your api internal.
 - **Throttle remind**. The response header include `X-RateLimit-Limit`, `X-Ratelimit-Used`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`.
 
@@ -42,6 +44,15 @@ end
 | `expire`     | `1.day`               | Waiting time for reset rate.   |
 | `condition`  | `proc { true }`       | Condition of enabled throttle. |
 | `identity`   | `proc { request.ip }` | Used for throttle identity.    |
+
+## Configure
+
+```ruby
+# default configuration
+Grape::Throttling.configure do |config|
+  config.redis = ::Redis.new(url: 'redis://localhost:6379/0', driver: :hiredis)
+end
+```
 
 ## Development
 
