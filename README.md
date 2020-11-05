@@ -2,6 +2,8 @@
 
 [![Build Status](https://travis-ci.org/OuYangJinTing/grape-throttling.svg)](https://travis-ci.org/OuYangJinTing/grape-throttling)
 [![Gem Version](https://badge.fury.io/rb/grape-throttling.svg)](https://badge.fury.io/rb/grape-throttling)
+[![Maintainability](https://api.codeclimate.com/v1/badges/f200c46569aa627315f6/maintainability)](https://codeclimate.com/github/OuYangJinTing/grape-throttling/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/f200c46569aa627315f6/test_coverage)](https://codeclimate.com/github/OuYangJinTing/grape-throttling/test_coverage)
 
 If your api through [`grape`](https://github.com/ruby-grape/grape) build, you can use `grape-throttling` limit api rate.
 

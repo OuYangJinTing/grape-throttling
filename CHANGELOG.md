@@ -4,4 +4,4 @@
 
 ### 0.1.1 (2020-11-05)
 
-- Dimension reduction support ruby >= 2.3.0
+- Down grade support ruby >= 2.3.0
