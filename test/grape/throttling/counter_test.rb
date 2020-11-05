@@ -12,19 +12,19 @@ module Grape
       after { counter.del(key) }
 
       it '#set' do
-        assert counter.respond_to?(:set)
+        assert_respond_to counter, :set
       end
 
       it '#del' do
-        assert counter.respond_to?(:del)
+        assert_respond_to counter, :del
       end
 
       it '#expire' do
-        assert counter.respond_to?(:expire)
+        assert_respond_to counter, :expire
       end
 
       it '#ttl' do
-        assert counter.respond_to?(:ttl)
+        assert_respond_to counter, :ttl
       end
 
       describe '#get' do
@@ -45,9 +45,9 @@ module Grape
 
         it 'should not set expire when key already exists' do
           counter.incr(key)
-          assert counter.incr(key) != 1
+          refute_equal counter.incr(key), 1
           sleep 1
-          assert counter.ttl(key) != expire
+          refute_equal counter.ttl(key), expire
         end
 
         it 'should success call even if redis store value type error' do

@@ -8,7 +8,7 @@ module Grape
 
         module ClassMethods # :nodoc:
           # rubocop:disable Style/ClassVars
-          def use_throttle(max: 60, expire: 1.day, condition: proc { true }, identity: proc { request.ip }) # rubocop:disable Metrics/MethodLength
+          def use_throttle(max: 60, expire: 1.day, condition: proc { true }, identity: proc { request.ip }) # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
             max = max.try(:to_i).to_i
             raise ArgumentError, 'max must be positive number' unless max.positive?
             raise ArgumentError, 'condition must be Proc' unless condition.is_a?(Proc)

@@ -8,7 +8,7 @@ module Grape
       let(:config) { Configuration.new }
 
       it '#redis' do
-        assert config.respond_to?(:redis)
+        assert_respond_to config, :redis
       end
 
       it '#redis=' do

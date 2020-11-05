@@ -7,19 +7,19 @@ module Grape
     let(:request) { Request.allocate }
 
     it '#enabled_throttle' do
-      assert request.respond_to?(:enabled_throttle)
+      assert_respond_to request, :enabled_throttle
     end
 
     it '#enabled_throttle=' do
-      assert request.respond_to?(:enabled_throttle=)
+      assert_respond_to request, :enabled_throttle=
     end
 
     it '#id_throttle' do
-      assert request.respond_to?(:id_throttle)
+      assert_respond_to request, :id_throttle
     end
 
     it '#id_throttle=' do
-      assert request.respond_to?(:id_throttle=)
+      assert_respond_to request, :id_throttle=
     end
 
     it '#throttle?' do

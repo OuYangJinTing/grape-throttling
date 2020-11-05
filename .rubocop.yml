@@ -1,6 +1,7 @@
 require:
-  # - rubocop-packaging
   - rubocop-performance
+  - rubocop-minitest
+  # - rubocop-packaging
 
 Metrics/BlockLength:
   Enabled: false
@@ -12,6 +13,12 @@ Lint/NestedMethodDefinition:
   Enabled: false
 
 Layout/RescueEnsureAlignment:
+  Enabled: false
+
+Layout/LineLength:
+  Max: 120
+
+Style/DoubleNegation:
   Enabled: false
 
 Gemspec/OrderedDependencies:
