@@ -8,7 +8,7 @@ module Grape
 
         module ClassMethods # :nodoc:
           # rubocop:disable Style/ClassVars
-          def use_throttle(max: 60, expire: 1.day, condition: proc { true }, identity: proc { request.ip }) # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity
+          def use_throttle(max: 60, expire: 1.day, condition: proc { true }, identity: proc { request.ip }) # rubocop:disable Metrics/MethodLength, Metrics/CyclomaticComplexity, Metrics/PerceivedComplexity
             max = max.try(:to_i).to_i
             raise ArgumentError, 'max must be positive number' unless max.positive?
             raise ArgumentError, 'condition must be Proc' unless condition.is_a?(Proc)
@@ -37,10 +37,10 @@ module Grape
                 count = @@throttle.get(request.id_throttle)
 
                 message = if respond_to?(Throttling.config.overspeed_message_method)
-                  send(Throttling.config.overspeed_message_method)
-                else
-                  'API rate limit exceeded.'
-                end
+                            send(Throttling.config.overspeed_message_method)
+                          else
+                            'API rate limit exceeded.'
+                          end
 
                 error!(message, 403, mixin_throttle_headers(count)) if count >= @@throttle.max
               end
