@@ -20,6 +20,12 @@ module Grape
             identity: proc { params[:identity] }
           )
 
+          helpers do
+            def overspeed_message
+              'Custom overspeed alert message'
+            end
+          end
+
           namespace :namespace do
             post :endpoint do
               status(204)
@@ -51,6 +57,7 @@ module Grape
     it 'should limit access and set throttle headers when exceeded max throttle' do
       (max_throttle + 1).times { post '/namespace/endpoint', identity: identity, condition: true }
       assert_equal 403, last_response.status
+      assert_equal 'Custom overspeed alert message', last_response.body
       assert_equal max_throttle, last_response.headers['X-RateLimit-Limit'].to_i
       assert_equal max_throttle, last_response.headers['X-RateLimit-Used'].to_i
       assert_equal 0, last_response.headers['X-RateLimit-Remaining'].to_i

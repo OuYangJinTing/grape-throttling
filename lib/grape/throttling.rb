@@ -2,6 +2,7 @@
 
 require 'grape'
 require 'redis-namespace'
+require 'active_support/all'
 
 require 'grape/throttling/counter'
 require 'grape/throttling/extension/api'
