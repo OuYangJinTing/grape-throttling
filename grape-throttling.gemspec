@@ -32,6 +32,7 @@ Gem::Specification.new do |spec|
   spec.add_runtime_dependency 'grape', '>= 0.16.1'
   spec.add_runtime_dependency 'redis-namespace', '>= 0.8.0'
   spec.add_runtime_dependency 'hiredis'
+  spec.add_runtime_dependency 'activesupport', '>= 3'
 
   spec.add_development_dependency 'rake'
   spec.add_development_dependency 'rack-test'

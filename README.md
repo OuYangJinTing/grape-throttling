@@ -50,9 +50,12 @@ end
 ## Configure
 
 ```ruby
-# default configuration
+# Default configuration
 Grape::Throttling.configure do |config|
   config.redis = ::Redis.new(url: 'redis://localhost:6379/0', driver: :hiredis)
+  # Api overspeed access message custom method.
+  # If doesn't respond，default message is "API rate limit exceeded."
+  config.overspeed_message_method = :overspeed_message
 end
 ```
 

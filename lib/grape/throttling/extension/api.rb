@@ -36,7 +36,13 @@ module Grape
                 request.id_throttle = instance_eval(&@@throttle.identity)
                 count = @@throttle.get(request.id_throttle)
 
-                error!('API rate limit exceeded.', 403, mixin_throttle_headers(count)) if count >= @@throttle.max
+                message = if respond_to?(Throttling.config.overspeed_message_method)
+                  send(Throttling.config.overspeed_message_method)
+                else
+                  'API rate limit exceeded.'
+                end
+
+                error!(message, 403, mixin_throttle_headers(count)) if count >= @@throttle.max
               end
             end
 

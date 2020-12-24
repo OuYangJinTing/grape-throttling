@@ -14,6 +14,14 @@ module Grape
       it '#redis=' do
         assert_raises(ArgumentError) { config.redis = nil }
       end
+
+      it '#overspeed_message_method' do
+        assert_respond_to config, :overspeed_message_method
+      end
+
+      it '#overspeed_message_method=' do
+        assert_respond_to config, :overspeed_message_method=
+      end
     end
   end
 end
